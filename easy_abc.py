@@ -1793,10 +1793,8 @@ class RecordThread(threading.Thread):
         gmidi_in.append(self.midi_out)
         self.notes = []
         self.is_running = False
-
-        import wx.adv
-        self.tick1 = wx.adv.Sound(os.path.join(cwd, 'sound', 'tick1.wav'))
-        self.tick2 = wx.adv.Sound(os.path.join(cwd, 'sound', 'tick2.wav'))
+        self.tick1 = wx_sound(os.path.join(cwd, 'sound', 'tick1.wav'))
+        self.tick2 = wx_sound(os.path.join(cwd, 'sound', 'tick2.wav'))
 
     def timedelta_microseconds(self, td):
         return td.seconds*1000000 + td.microseconds
@@ -5456,7 +5454,7 @@ class MainFrame(wx.Frame):
             return
 
         if wx.Platform == "__WXMAC__":
-            text = text.replace('\r\n', '\r')
+            text = text.replace('\r\n', '\n')
         else:
             text = re.sub('\r+', '\r', text)
             if not '\n' in text:
