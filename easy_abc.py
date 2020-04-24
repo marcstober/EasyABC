@@ -7942,7 +7942,7 @@ class MainFrame(wx.Frame):
         gs_path = settings['gs_path'] #eliminate trailing \n
         if gs_path and (os.path.exists(gs_path) == False):
             msg = _('The executable %s could not be found') % gs_path
-            dlg = wx.MessageDialog(self, wsg, _('Warning'), wx.OK)
+            dlg = wx.MessageDialog(self, msg, _('Warning'), wx.OK)
             dlg.ShowModal()
 
         # 1.3.6.1 [SS] 2015-01-13 2015-01-28
